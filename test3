@@ -1,0 +1,29 @@
+
+a) This one is simple.
+
+   Compile opt1.c in the normal way:
+
+   cc -S opt1.c
+
+   read and understand the asm code.
+
+
+   Now, compile with all optimizations enabled:
+
+   cc -S -O3 opt1.c 
+
+   Read the code and find out how the compiler performs
+   function inlining.
+ 
+b) This is a bit more complex.
+
+   Compile opt2.c with and without optimization (as mentioned
+   above).
+
+   Find out how the compiler performs "Common Sub Expression
+   Elimination"
+
+
+c) Write a blog post discussing these two optimizations
+
+

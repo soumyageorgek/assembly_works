@@ -1,0 +1,39 @@
+	.file	"opt1.c"
+	.text
+.globl sqr
+	.type	sqr, @function
+sqr:
+	pushl	%ebp
+	movl	%esp, %ebp
+	movl	8(%ebp), %eax
+	imull	8(%ebp), %eax
+	popl	%ebp
+	ret
+	.size	sqr, .-sqr
+	.section	.rodata
+.LC0:
+	.string	"%d\n"
+	.text
+.globl main
+	.type	main, @function
+main:
+	leal	4(%esp), %ecx
+	andl	$-16, %esp
+	pushl	-4(%ecx)
+	pushl	%ebp
+	movl	%esp, %ebp
+	pushl	%ecx
+	subl	$20, %esp
+	movl	$10, (%esp)
+	call	sqr
+	movl	%eax, 4(%esp)
+	movl	$.LC0, (%esp)
+	call	printf
+	addl	$20, %esp
+	popl	%ecx
+	popl	%ebp
+	leal	-4(%ecx), %esp
+	ret
+	.size	main, .-main
+	.ident	"GCC: (Debian 4.3.2-1.1) 4.3.2"
+	.section	.note.GNU-stack,"",@progbits
